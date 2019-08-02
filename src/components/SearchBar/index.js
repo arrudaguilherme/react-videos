@@ -1,14 +1,15 @@
 import React from 'react';
 
 export default class SearchBar extends React.Component{
-    state = {searchTerm:''};
+    state = {term:''};
 
     onInputChange = (event) =>{
-        this.setState({searchTerm:event.target.value});
+        this.setState({term:event.target.value});
     };
 
     onFormSubmit = (event) =>{
         event.preventDefault();
+        this.props.onFormSubmit(this.state.term);
 
         //Make sure to call
         //call back from parent component
@@ -23,7 +24,7 @@ export default class SearchBar extends React.Component{
                     <label>Video Search</label>
                     <input 
                     type="text" 
-                    value={this.state.searchTerm}
+                    value={this.state.Term}
                     onChange={this.onInputChange}/>
                 </div>
             </form>
